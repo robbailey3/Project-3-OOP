@@ -1,0 +1,33 @@
+{
+  "name": "project-3-oop",
+  "version": "1.0.0",
+  "description": "Project 3 for the Udacity Front-End Developer NanoDegree",
+  "main": "src/app.js",
+  "dependencies": {
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.0",
+    "typescript": "^2.9.2",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbailey3/Project-3-OOP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbailey3/Project-3-OOP/issues"
+  },
+  "homepage": "https://github.com/robbailey3/Project-3-OOP#readme"
+}

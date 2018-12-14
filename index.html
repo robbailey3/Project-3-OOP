@@ -1,13 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Effective JavaScript: Frogger</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-</body>
+    <!-- <link rel="stylesheet" href="src/css/style.css" /> -->
+  </head>
+  <body>
+    <div id="modal-backdrop" class="active"></div>
+    <div id="new-game-modal" aria-modal="true" class="modal active">
+      <div id="introduction"><h1></h1></div>
+      <div id="start-game">
+        <fieldset>
+          <legend><h2>Choose a difficulty</h2></legend>
+          <input
+            type="radio"
+            name="start-diff"
+            id="start-easy"
+            value="easy"
+          /><label for="start-easy">Easy</label>
+          <input
+            type="radio"
+            name="start-diff"
+            id="start-medium"
+            value="medium"
+            checked="true"
+          /><label for="start-medium">Medium</label
+          ><input
+            type="radio"
+            name="start-diff"
+            id="start-hard"
+            value="hard"
+          /><label for="start-hard">Hard</label>
+        </fieldset>
+        <fieldset id="choose-char">
+          <legend><h2>Choose a Character</h2></legend>
+          <input
+            type="radio"
+            name="start-char"
+            id="char-boy"
+            checked="true"
+            value="images/char-boy.png"
+          /><label for="char-boy"
+            ><img class="character" src="/images/char-boy.png" alt="Boy"
+          /></label>
+          <input
+            type="radio"
+            name="start-char"
+            id="char-cat-girl"
+            value="images/char-cat-girl.png"
+          /><label for="char-cat-girl"
+            ><img
+              class="character"
+              src="/images/char-cat-girl.png"
+              alt="Cat Girl"
+          /></label>
+          <input
+            type="radio"
+            name="start-char"
+            id="char-horn-girl"
+            value="images/char-horn-girl.png"
+          /><label for="char-horn-girl"
+            ><img
+              class="character"
+              src="/images/char-horn-girl.png"
+              alt="Horn Girl"/></label
+          ><input
+            type="radio"
+            name="start-char"
+            id="char-pink-girl"
+            value="images/char-pink-girl.png"
+          /><label for="char-pink-girl"
+            ><img
+              class="character"
+              src="/images/char-pink-girl.png"
+              alt="Pink Girl"/></label
+          ><input
+            type="radio"
+            name="start-char"
+            id="char-princess-girl"
+            value="images/char-princess-girl.png"
+          /><label for="char-princess-girl"
+            ><img
+              class="character"
+              src="/images/char-princess-girl.png"
+              alt="Princess Girl"
+          /></label>
+        </fieldset>
+        <div class="btn-container">
+          <button class="btn" id="start-game-btn">Start!</button>
+        </div>
+      </div>
+    </div>
+    <div id="result"></div>
+    <script src="dist/index.js"></script>
+  </body>
 </html>

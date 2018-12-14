@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower');
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Gamja Flower', cursive;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  -webkit-box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.7);
+  padding: 32px;
+  border-radius: 8px;
+  display: none;
+}
+.modal.active {
+  display: block;
+}
+.btn {
+  padding: 10px 15px;
+  font-family: inherit;
+  font-size: 22px;
+  color: #fff;
+  border: none;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.6);
+  background: #ad1457;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 0;
+}
+.btn:hover {
+  background: #880e4f;
+}
+input[type='radio'] + label {
+  font-size: 24px;
+}
+#choose-char input[type='radio'] {
+  position: absolute;
+  left: -10000px;
+}
+#choose-char input[type='radio']:focus + label {
+  -webkit-box-shadow: 0 9px 12px -2px grey;
+  box-shadow: 0 9px 12px -2px grey;
+}
+#choose-char input[type='radio']:checked + label {
+  border: 1px solid #cfcfcf;
+  display: inline-block;
+}
