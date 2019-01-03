@@ -43,18 +43,32 @@ body {
 .btn:hover {
   background: #880e4f;
 }
+fieldset {
+  border: none;
+  padding: 20px;
+}
 input[type='radio'] + label {
   font-size: 24px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: 0.3s;
+  display: inline-block;
 }
 #choose-char input[type='radio'] {
   position: absolute;
   left: -10000px;
 }
+#choose-char input[type='radio'] + label img {
+  transition: 0.2s;
+}
 #choose-char input[type='radio']:focus + label {
-  -webkit-box-shadow: 0 9px 12px -2px grey;
-  box-shadow: 0 9px 12px -2px grey;
+  background: #14ad6a;
 }
 #choose-char input[type='radio']:checked + label {
-  border: 1px solid #cfcfcf;
-  display: inline-block;
+  background: #14ad6a;
+}
+#choose-char input[type='radio']:focus + label img,
+#choose-char input[type='radio']:checked + label img {
+  transform: translateY(-10px);
+  filter: drop-shadow(5px 5px 5px #222222);
 }

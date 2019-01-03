@@ -15,4 +15,8 @@ export class Game {
   startGame() {
     this.engine.init();
   }
+  renderGems() {}
+  handleWin() {
+    this.engine.updateDisplay('#result', `<p>Winner!</p>`);
+  }
 }

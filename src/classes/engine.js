@@ -8,6 +8,7 @@ export class Engine {
     document.body.appendChild(this.canvas);
     this.player = player;
     this.enemies = enemies;
+    this.game = game;
     this.fails = 0;
   }
   main() {
@@ -29,7 +30,7 @@ export class Engine {
   update(dt) {
     this.updateEntities(dt);
     if (this.player.y < 48) {
-      this.handleWin();
+      this.game.handleWin();
     }
     this.detectCollisions();
   }
@@ -87,18 +88,22 @@ export class Engine {
     this.player.x = 202.5;
     this.player.y = 383;
   }
-  handleWin() {
-    this.updateDisplay('#result', `<p>Winner!!!!</p>`);
-  }
   renderEntities() {
     this.enemies.forEach(enemy => {
       enemy.render();
     });
     this.player.render();
   }
-  reset() {}
+  reset() {
+    this.fails = 0;
+  }
   updateDisplay(selector, HTML) {
     document.querySelector(selector).innerHTML = HTML;
   }
-  renderGems() {}
+  renderGems(gems) {
+    // How many gems?
+    // Where on the game do the gems go?
+    // What colour do they need to be?
+    // Render dem gems
+  }
 }

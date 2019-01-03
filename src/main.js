@@ -27,6 +27,7 @@ class Main {
   }
   startNewGame(level, character) {
     this.game = new Game(this.config.levels[level], character);
+    this.gameStarted = true;
   }
   init(level, character) {
     console.log(this);
@@ -64,15 +65,16 @@ startBtn.addEventListener('click', () => {
       document.querySelector('input[name="start-diff"]:checked').value,
       document.querySelector('input[name="start-char"]:checked').value
     );
+    document.addEventListener('keyup', e => {
+      let allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+      };
+      if (main.gameStarted) {
+        main.handleInput(allowedKeys[e.keyCode]);
+      }
+    });
   });
-});
-document.addEventListener('keyup', e => {
-  let allowedKeys = {
-    37: 'left',
-    38: 'up',
-    39: 'right',
-    40: 'down'
-  };
-
-  main.handleInput(allowedKeys[e.keyCode]);
 });
