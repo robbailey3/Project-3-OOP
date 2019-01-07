@@ -91,7 +91,27 @@
         </div>
       </div>
     </div>
-    <div id="result"></div>
+    <div id="game-stats">
+      <div id="wins">
+        <strong>Wins: </strong><span id="number-of-wins"></span>
+      </div>
+      <div id="fails">
+        <strong>Fails: </strong><span id="number-of-fails"></span>
+      </div>
+      <div id="gems">
+        <strong>Gems Collected: </strong><span id="number-of-gems"></span>
+      </div>
+    </div>
+    <div id="new-game-container">
+      <button id="new-game" class="btn">New Game</button>
+    </div>
+    <div id="win-popup" class="modal">
+      <h1>You Made It!</h1>
+      <p>
+        You reached the river in <span id="number-of-moves"></span> moves with
+        <span id="fail-total"></span> fails!
+      </p>
+    </div>
     <script src="dist/index.js"></script>
   </body>
 </html>

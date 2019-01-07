@@ -9,7 +9,7 @@ export class Enemy {
     this.x += this.speed * dt;
     if (this.x > window.ctx.canvas.width) {
       this.x = -Math.floor(Math.random() * (100 - 200) + 200);
-      this.y = Math.random() * 184 + 50;
+      this.y = Math.floor(Math.random() * 184) + 50;
       this.speed++;
     }
   }

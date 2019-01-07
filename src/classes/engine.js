@@ -1,20 +1,22 @@
 export class Engine {
   constructor(player, enemies, game) {
+    this.reset();
+    this.createCanvas();
+    this.player = player;
+    this.enemies = enemies;
+    this.game = game;
+  }
+  createCanvas() {
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
     window.ctx = this.ctx;
     this.canvas.width = 505;
     this.canvas.height = 606;
     document.body.appendChild(this.canvas);
-    this.player = player;
-    this.enemies = enemies;
-    this.game = game;
-    this.fails = 0;
   }
   main() {
     let now = Date.now(),
       dt = (now - this.lastTime) / 1000.0;
-
     this.update(dt);
     this.render();
     this.lastTime = now;
@@ -23,7 +25,6 @@ export class Engine {
     });
   }
   init() {
-    this.reset();
     this.lastTime = Date.now();
     this.main();
   }
@@ -31,8 +32,10 @@ export class Engine {
     this.updateEntities(dt);
     if (this.player.y < 48) {
       this.game.handleWin();
+      this.moveBackToStart();
     }
     this.detectCollisions();
+    this.detectGems();
   }
   updateEntities(dt) {
     this.enemies.forEach(enemy => {
@@ -70,8 +73,14 @@ export class Engine {
         );
       }
     }
-    this.renderEntities();
+    if (this.game.showWinTile) {
+      this.renderWinTile();
+    }
     this.renderGems();
+    this.renderEntities();
+  }
+  renderWinTile() {
+    this.ctx.drawImage(window.resources.get('images/Selector.png'), 202.5, 383);
   }
   detectCollisions() {
     this.enemies.forEach(enemy => {
@@ -83,8 +92,25 @@ export class Engine {
       }
     });
   }
+  detectGems() {
+    this.gems.forEach(gem => {
+      if (
+        Math.abs(gem.x - this.player.x) < 30 &&
+        Math.abs(gem.y - this.player.y) < 30
+      ) {
+        this.gems = this.gems.filter(value => {
+          return value !== gem;
+        });
+        this.game.collectedGems++;
+        this.game.updateStats();
+      }
+    });
+  }
   handleCollision() {
-    this.fails++;
+    this.game.handleFail();
+    this.moveBackToStart();
+  }
+  moveBackToStart() {
     this.player.x = 202.5;
     this.player.y = 383;
   }
@@ -95,15 +121,15 @@ export class Engine {
     this.player.render();
   }
   reset() {
-    this.fails = 0;
+    let existingCanvas = Array.from(document.getElementsByTagName('canvas'));
+    existingCanvas.forEach(el => el.parentNode.removeChild(el));
   }
-  updateDisplay(selector, HTML) {
-    document.querySelector(selector).innerHTML = HTML;
+  setGems(gems) {
+    this.gems = gems;
   }
-  renderGems(gems) {
-    // How many gems?
-    // Where on the game do the gems go?
-    // What colour do they need to be?
-    // Render dem gems
+  renderGems() {
+    this.gems.forEach(gem => {
+      this.ctx.drawImage(window.resources.get(gem.image), gem.x, gem.y);
+    });
   }
 }

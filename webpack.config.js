@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   entry: './src/main.js',
   watch: true,
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {

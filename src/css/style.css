@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Gamja+Flower');
+@import url('https://use.typekit.net/enx5ndn.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +9,9 @@
 body {
   text-align: center;
   font-size: 18px;
-  font-family: 'Gamja Flower', cursive;
+  font-family: futura-pt, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .modal {
   position: fixed;
@@ -51,6 +54,8 @@ input[type='radio'] + label {
   font-size: 24px;
   border: 1px solid transparent;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
   display: inline-block;
 }
@@ -59,6 +64,8 @@ input[type='radio'] + label {
   left: -10000px;
 }
 #choose-char input[type='radio'] + label img {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 #choose-char input[type='radio']:focus + label {
@@ -69,6 +76,31 @@ input[type='radio'] + label {
 }
 #choose-char input[type='radio']:focus + label img,
 #choose-char input[type='radio']:checked + label img {
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
   transform: translateY(-10px);
+  -webkit-filter: drop-shadow(5px 5px 5px #222222);
   filter: drop-shadow(5px 5px 5px #222222);
+}
+#game-stats {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #14ad6a;
+  display: none;
+  text-align: left;
+  padding: 16px;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 8px;
+}
+#new-game-container {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  padding: 16px;
+}
+#win-popup {
+  display: none;
+  font-size: 24px;
 }

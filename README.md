@@ -1,20 +1,34 @@
 # Classic Arcade Game Clone Project
 
-## Table of Contents
+## Contents Contents
 
-- [Instructions](#instructions)
-- [Contributing](#contributing)
+- [Classic Arcade Game Clone Project](#classic-arcade-game-clone-project)
+  - [Contents Contents](#contents-contents)
+  - [Installation](#installation)
+  - [How to Run](#how-to-run)
+  - [How to Build](#how-to-build)
+  - [How to Play](#how-to-play)
+  - [Why Webpack?](#why-webpack)
+  - [Notes to the reviewer](#notes-to-the-reviewer)
 
-## Instructions
+## Installation
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+Firstly, clone this project (`git clone`). Change directory into the folder (```cd```), then you will need to install the dependencies by running `npm install`.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
+## How to Run
 
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
+To run the game, simply open the index.html file in a browser.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## How to Build
 
-## Contributing
+This game is 'bundled' using webpack (more on why I have used webpack later). Therefore, the code must be built (or compiled) before it can be run by a browser. To do this, simply open the console, navigate to the folder and enter:
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+```bash
+npm run build
+```
+
+## How to Play
+
+## Why Webpack?
+
+## Notes to the reviewer

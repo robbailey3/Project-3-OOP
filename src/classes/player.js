@@ -4,9 +4,11 @@ export class Player {
     this.x = x;
     this.y = y;
     this.speed = 50.5;
+    this.numberOfMoves = 0;
     console.log(this);
   }
   handleInput(input) {
+    this.numberOfMoves++;
     if (input == 'left') {
       if (this.x - this.speed > 0) {
         this.x -= this.speed;
