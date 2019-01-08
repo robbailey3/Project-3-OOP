@@ -1,4 +1,16 @@
+/**
+ * @description The class for the methods of the Player
+ * @export
+ * @class Player
+ */
 export class Player {
+  /**
+   * @description Creates an instance of Player.
+   * @param {number} x
+   * @param {number} y
+   * @param {string} sprite
+   * @memberof Player
+   */
   constructor(x, y, sprite) {
     this.sprite = sprite;
     this.x = x;
@@ -7,6 +19,11 @@ export class Player {
     this.numberOfMoves = 0;
     console.log(this);
   }
+  /**
+   * @description Deal with the input from the user.
+   * @param {string} input
+   * @memberof Player
+   */
   handleInput(input) {
     this.numberOfMoves++;
     if (input == 'left') {
@@ -30,7 +47,16 @@ export class Player {
       }
     }
   }
+  /**
+   * TODO: This does nothing, but one day it might
+   * @param {number} dt
+   * @memberof Player
+   */
   update(dt) {}
+  /**
+   * @description Render the image onto the canvas
+   * @memberof Player
+   */
   render() {
     window.ctx.drawImage(window.resources.get(this.sprite), this.x, this.y);
   }

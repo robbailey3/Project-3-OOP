@@ -10,7 +10,7 @@
     <div id="new-game-modal" aria-modal="true" class="modal active">
       <div id="introduction"><h1></h1></div>
       <div id="start-game">
-        <fieldset>
+        <fieldset id="game-difficulty">
           <legend><h2>Choose a difficulty</h2></legend>
           <input
             type="radio"
@@ -108,7 +108,8 @@
     <div id="win-popup" class="modal">
       <h1>You Made It!</h1>
       <p>
-        You reached the river in <span id="number-of-moves"></span> moves with
+        You reached the river in <span id="number-of-moves"></span> moves in
+        <span id="time-taken"></span> seconds with
         <span id="fail-total"></span> fails!
       </p>
     </div>

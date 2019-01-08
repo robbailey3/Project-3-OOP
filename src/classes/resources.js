@@ -1,9 +1,22 @@
+/**
+ * @description Class for the resource cache. Taken from the project base and turned into ES6 Class.
+ * @export
+ * @class Resources
+ */
 export class Resources {
+  /**
+   * @description Creates an instance of Resources.
+   * @memberof Resources
+   */
   constructor() {
     this.resourceCache = {};
     this.callbacks = [];
-    console.log(this);
   }
+  /**
+   * @description loads a url or an array of URLs
+   * @param {*} urlOrArr
+   * @memberof Resources
+   */
   load(urlOrArr) {
     if (urlOrArr instanceof Array) {
       /**
@@ -16,6 +29,12 @@ export class Resources {
       _load(urlOrArr);
     }
   }
+  /**
+   * @description actually do the loading and return the image
+   * @param {*} url
+   * @returns
+   * @memberof Resources
+   */
   _load(url) {
     if (this.resourceCache[url]) {
       return this.resourceCache[url];
@@ -33,9 +52,20 @@ export class Resources {
       img.src = url;
     }
   }
+  /**
+   * @description fetch a resource from the cache
+   * @param {string} url
+   * @returns image
+   * @memberof Resources
+   */
   get(url) {
     return this.resourceCache[url];
   }
+  /**
+   * @description
+   * @returns Boolean
+   * @memberof Resources
+   */
   isReady() {
     let ready = true;
     for (var k in this.resourceCache) {
@@ -45,6 +75,11 @@ export class Resources {
     }
     return ready;
   }
+  /**
+   * @description add function to array of callbacks
+   * @param {Function} func
+   * @memberof Resources
+   */
   onReady(func) {
     this.callbacks.push(func);
   }

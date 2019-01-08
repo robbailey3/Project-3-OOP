@@ -1,5 +1,5 @@
-@import url('https://use.typekit.net/enx5ndn.css');
-
+@import url('https://use.typekit.net/enx5ndn.css'); /* Import a font from Adobe Typekit */
+/* General Element Reset */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,9 @@ body {
   font-family: futura-pt, sans-serif;
   font-weight: 400;
   font-style: normal;
+  background: #fafafa;
 }
+/* Generic Modal Elements */
 .modal {
   position: fixed;
   top: 50%;
@@ -30,6 +32,7 @@ body {
 .modal.active {
   display: block;
 }
+/* Buttons */
 .btn {
   padding: 10px 15px;
   font-family: inherit;
@@ -46,6 +49,9 @@ body {
 .btn:hover {
   background: #880e4f;
 }
+.btn:focus {
+  border: 2px solid #222222; /* Nice and easy to see focus indicators to improve accessibility*/
+}
 fieldset {
   border: none;
   padding: 20px;
@@ -58,6 +64,48 @@ input[type='radio'] + label {
   -o-transition: 0.3s;
   transition: 0.3s;
   display: inline-block;
+  cursor: pointer;
+}
+#game-difficulty label {
+  margin: 4px 8px;
+}
+/* Snazzy custom radio buttons */
+#game-difficulty input[type='radio'] {
+  position: absolute;
+  left: -10000px;
+}
+#game-difficulty input[type='radio'] + label {
+  padding-left: 40px;
+  position: relative;
+}
+#game-difficulty input[type='radio'] + label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dedede;
+}
+#game-difficulty input[type='radio']:focus + label::before {
+  background: #ccc;
+}
+#game-difficulty input[type='radio']:focus + label {
+  font-weight: bold;
+}
+#game-difficulty input[type='radio']:checked + label::before {
+  background: #14ad6a;
+}
+#game-difficulty input[type='radio']:checked + label::after {
+  position: absolute;
+  top: 9.5px;
+  left: 5px;
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
 }
 #choose-char input[type='radio'] {
   position: absolute;
@@ -70,6 +118,7 @@ input[type='radio'] + label {
 }
 #choose-char input[type='radio']:focus + label {
   background: #14ad6a;
+  border: 3px solid #555;
 }
 #choose-char input[type='radio']:checked + label {
   background: #14ad6a;
@@ -82,6 +131,7 @@ input[type='radio'] + label {
   -webkit-filter: drop-shadow(5px 5px 5px #222222);
   filter: drop-shadow(5px 5px 5px #222222);
 }
+/* The game stats modal thing */
 #game-stats {
   position: fixed;
   bottom: 25px;
@@ -93,7 +143,9 @@ input[type='radio'] + label {
   color: #fff;
   font-size: 24px;
   border-radius: 8px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.7);
 }
+/* New Game Button container */
 #new-game-container {
   position: fixed;
   left: 25px;

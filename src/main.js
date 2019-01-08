@@ -2,13 +2,17 @@ import { Game } from './classes/game';
 import { Resources } from './classes/resources';
 import './css/style.css'; // Importing CSS into JS so WebPack can deal with it.
 class Main {
+  /**
+   * @description Creates an instance of Main.
+   * @memberof Main
+   */
   constructor() {
     this.resourcesLoaded = false;
     this.config = {
       levels: {
         easy: {
           speed: 1,
-          enemies: 3
+          enemies: 4
         },
         medium: {
           speed: 2,
@@ -16,21 +20,32 @@ class Main {
         },
         hard: {
           speed: 3,
-          enemies: 7
+          enemies: 6
         }
       }
     };
   }
+  /**
+   * @description Displays/Hides a modal by selector
+   * @param {string} modalSelector
+   * @returns {this}
+   * @memberof Main
+   */
   toggleModal(modalSelector) {
     document.querySelector('#modal-backdrop').classList.toggle('active');
     document.querySelector(modalSelector).classList.toggle('active');
     return this; // Returning {this} enables function chaining.
   }
+  /**
+   * @description Start a new game
+   * @param {object} level
+   * @param {string} character
+   * @memberof Main
+   */
   startNewGame(level, character) {
     this.loadResources()
       .then(() => {
         this.game = new Game(this.config.levels[level], character);
-        console.log(this.game);
         this.gameRunning = true;
         this.showStats();
       })
@@ -38,15 +53,35 @@ class Main {
         console.log(e);
       });
   }
+  /**
+   * @description Toggles the new-game modal
+   * @memberof Main
+   */
   newGame() {
     this.toggleModal('#new-game-modal');
   }
+  /**
+   * @description Deals with the player's input
+   * @param {string} input
+   * @memberof Main
+   */
   handleInput(input) {
-    this.game.player.handleInput(input);
+    if (!this.game.disableMoves) {
+      this.game.player.handleInput(input);
+    }
   }
+  /**
+   * @description displays the stats div
+   * @memberof Main
+   */
   showStats() {
     document.getElementById('game-stats').style.display = 'block';
   }
+  /**
+   * @description loads resources (if not already loaded).
+   * @returns {Promise}
+   * @memberof Main
+   */
   loadResources() {
     return new Promise((resolve, reject) => {
       try {
@@ -79,13 +114,12 @@ class Main {
     });
   }
 }
-const main = new Main();
-window.resources = new Resources();
+const main = new Main(); // Create a new instance of the Main class
+window.resources = new Resources(); // Assign an instance of the Resources class to the window object so it is globally available
 
 const startBtn = document.querySelector('#start-game-btn');
 startBtn.addEventListener('click', () => {
-  console.log('CLICKED');
-  main.toggleModal('#new-game-modal');
+  main.toggleModal('#new-game-modal'); // Hide the modal
   main.startNewGame(
     document.querySelector('input[name="start-diff"]:checked').value,
     document.querySelector('input[name="start-char"]:checked').value
