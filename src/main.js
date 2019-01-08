@@ -47,6 +47,7 @@ class Main {
       .then(() => {
         this.game = new Game(this.config.levels[level], character);
         this.gameRunning = true;
+        document.getElementById('new-game-container').style.display = 'block';
         this.showStats();
       })
       .catch(e => {

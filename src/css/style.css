@@ -151,6 +151,7 @@ input[type='radio'] + label {
   left: 25px;
   bottom: 25px;
   padding: 16px;
+  display: none;
 }
 #win-popup {
   display: none;
