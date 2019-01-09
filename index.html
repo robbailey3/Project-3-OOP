@@ -7,11 +7,16 @@
   </head>
   <body>
     <div id="modal-backdrop" class="active"></div>
-    <div id="new-game-modal" aria-modal="true" class="modal active">
+    <div
+      id="new-game-modal"
+      aria-modal="true"
+      class="modal active"
+      role="dialog"
+    >
       <div id="introduction"><h1></h1></div>
       <div id="start-game">
         <fieldset id="game-difficulty">
-          <legend><h2>Choose a difficulty</h2></legend>
+          <legend>Choose a difficulty</legend>
           <input
             type="radio"
             name="start-diff"
@@ -23,7 +28,7 @@
             name="start-diff"
             id="start-medium"
             value="medium"
-            checked="true"
+            checked
           /><label for="start-medium">Medium</label
           ><input
             type="radio"
@@ -33,15 +38,15 @@
           /><label for="start-hard">Hard</label>
         </fieldset>
         <fieldset id="choose-char">
-          <legend><h2>Choose a Character</h2></legend>
+          <legend>Choose a Character</legend>
           <input
             type="radio"
             name="start-char"
             id="char-boy"
-            checked="true"
+            checked
             value="images/char-boy.png"
           /><label for="char-boy"
-            ><img class="character" src="/images/char-boy.png" alt="Boy"
+            ><img class="character" src="./images/char-boy.png" alt="Boy"
           /></label>
           <input
             type="radio"
@@ -51,7 +56,7 @@
           /><label for="char-cat-girl"
             ><img
               class="character"
-              src="/images/char-cat-girl.png"
+              src="./images/char-cat-girl.png"
               alt="Cat Girl"
           /></label>
           <input
@@ -62,7 +67,7 @@
           /><label for="char-horn-girl"
             ><img
               class="character"
-              src="/images/char-horn-girl.png"
+              src="./images/char-horn-girl.png"
               alt="Horn Girl"/></label
           ><input
             type="radio"
@@ -72,7 +77,7 @@
           /><label for="char-pink-girl"
             ><img
               class="character"
-              src="/images/char-pink-girl.png"
+              src="./images/char-pink-girl.png"
               alt="Pink Girl"/></label
           ><input
             type="radio"
@@ -82,7 +87,7 @@
           /><label for="char-princess-girl"
             ><img
               class="character"
-              src="/images/char-princess-girl.png"
+              src="./images/char-princess-girl.png"
               alt="Princess Girl"
           /></label>
         </fieldset>

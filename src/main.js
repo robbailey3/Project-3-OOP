@@ -86,7 +86,6 @@ class Main {
   loadResources() {
     return new Promise((resolve, reject) => {
       try {
-        console.log(this.resourcesLoaded);
         if (this.resourcesLoaded === true) {
           resolve(true);
         }
@@ -115,30 +114,32 @@ class Main {
     });
   }
 }
-const main = new Main(); // Create a new instance of the Main class
-window.resources = new Resources(); // Assign an instance of the Resources class to the window object so it is globally available
+window.onload = () => {
+  const main = new Main(); // Create a new instance of the Main class
+  window.resources = new Resources(); // Assign an instance of the Resources class to the window object so it is globally available
 
-const startBtn = document.querySelector('#start-game-btn');
-startBtn.addEventListener('click', () => {
-  main.toggleModal('#new-game-modal'); // Hide the modal
-  main.startNewGame(
-    document.querySelector('input[name="start-diff"]:checked').value,
-    document.querySelector('input[name="start-char"]:checked').value
-  );
-});
-const newGameBtn = document.getElementById('new-game');
-newGameBtn.addEventListener('click', () => {
-  main.gameRunning = false;
-  main.newGame();
-});
-document.addEventListener('keyup', e => {
-  let allowedKeys = {
-    37: 'left',
-    38: 'up',
-    39: 'right',
-    40: 'down'
-  };
-  if (main.gameRunning) {
-    main.handleInput(allowedKeys[e.keyCode]);
-  }
-});
+  const startBtn = document.querySelector('#start-game-btn');
+  startBtn.addEventListener('click', () => {
+    main.toggleModal('#new-game-modal'); // Hide the modal
+    main.startNewGame(
+      document.querySelector('input[name="start-diff"]:checked').value,
+      document.querySelector('input[name="start-char"]:checked').value
+    );
+  });
+  const newGameBtn = document.getElementById('new-game');
+  newGameBtn.addEventListener('click', () => {
+    main.gameRunning = false;
+    main.newGame();
+  });
+  document.addEventListener('keyup', e => {
+    let allowedKeys = {
+      37: 'left',
+      38: 'up',
+      39: 'right',
+      40: 'down'
+    };
+    if (main.gameRunning) {
+      main.handleInput(allowedKeys[e.keyCode]);
+    }
+  });
+};

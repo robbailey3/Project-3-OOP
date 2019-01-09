@@ -2,6 +2,7 @@ import { Player } from './player';
 import { Enemy } from './enemy';
 import { Engine } from './engine';
 import { Timer } from './timer';
+import { Gem } from './gem';
 /**
  * @description The main class for the Game methods
  * @export
@@ -17,7 +18,7 @@ export class Game {
   constructor(level, character) {
     this.enemies = [];
     this.level = level;
-    this.player = new Player(202.5, 383, character);
+    this.player = new Player(character);
     this.timer = new Timer();
     for (let i = 0; i < this.level.enemies; i++) {
       this.enemies[i] = new Enemy(this.level.speed);
@@ -55,15 +56,15 @@ export class Game {
       'images/Gem Green.png',
       'images/Gem Orange.png'
     ];
-    const gems = [...new Array(2)].map(gem => {
-      gem = {};
-      gem.y = Math.floor(Math.random() * 2 + 1) * 120;
-      gem.x = Math.floor(Math.random() * 5) * 101;
-      gem.image = gemImages[Math.floor(Math.random() * gemImages.length)];
-      return gem;
+    /* Create the array of Gems */
+    const gems = [...new Array(2)].map(() => {
+      return new Gem(
+        Math.floor(Math.random() * 2 + 1) * 120,
+        Math.floor(Math.random() * 5) * 101,
+        gemImages[Math.floor(Math.random() * gemImages.length)]
+      );
     });
     this.engine.setGems(gems);
-    console.log(gems);
   }
   /**
    * @description deal with what happens when the player wins

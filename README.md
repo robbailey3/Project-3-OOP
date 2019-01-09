@@ -16,7 +16,7 @@ Firstly, clone this project (`git clone`). Change directory into the folder (`cd
 
 ## How to Run
 
-To run the game, simply open the index.html file in a browser.
+To run the game, simply open the index.html file in a browser. It can currently be run without the use of a local server because the index.html file looks at the dist/index.js file to run.
 
 ## How to Build
 
@@ -26,7 +26,7 @@ This game is 'bundled' using webpack (more on why I have used webpack later). Th
 npm run build
 ```
 
-Webpack will then watch the source files and rebuild each time they are saved.
+Webpack will then watch the source files and rebuild each time they are saved. The bundled output is in the 'dist' folder (dist/index.js).
 
 ## How to Play
 
@@ -34,7 +34,7 @@ Select you level and player using the on-screen dialog. The harder the level, th
 
 ## Why Webpack?
 
-I have chosen to use Webpack to bundle my code into one JavaScript file. This, I feel, helps the keep the project organised and reduces the amount of `<script>` tags which are needed in the HTML file (i.e. I only need one). It also enables the use of ES7 JavaScript Modules. For example, I can use the below code example to import and export classes from file to file.
+I have chosen to use Webpack to bundle my code into one JavaScript file. This, I feel, helps the keep the project organised and reduces the amount of `<script>` tags which are needed in the HTML file (i.e. I only need one). It also enables the use of ES7 JavaScript Modules, support for which is limited on browsers. For example, I can use the below code example to import and export classes from file to file.
 
 ```javascript
 import { x } from './y.js';

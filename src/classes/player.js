@@ -1,23 +1,22 @@
+import { GameEntity } from './gameEntitiy';
+
 /**
  * @description The class for the methods of the Player
  * @export
  * @class Player
  */
-export class Player {
+export class Player extends GameEntity {
   /**
    * @description Creates an instance of Player.
-   * @param {number} x
-   * @param {number} y
+   * @extends GameEntity
    * @param {string} sprite
    * @memberof Player
    */
-  constructor(x, y, sprite) {
+  constructor(sprite) {
+    super(202.5, 383, sprite);
     this.sprite = sprite;
-    this.x = x;
-    this.y = y;
     this.speed = 50.5;
     this.numberOfMoves = 0;
-    console.log(this);
   }
   /**
    * @description Deal with the input from the user.
@@ -37,7 +36,7 @@ export class Player {
       }
     }
     if (input == 'right') {
-      if (this.x < window.ctx.canvas.width - 101) {
+      if (this.x < window.canvasWidth - 101) {
         this.x += this.speed;
       }
     }
@@ -53,11 +52,4 @@ export class Player {
    * @memberof Player
    */
   update(dt) {}
-  /**
-   * @description Render the image onto the canvas
-   * @memberof Player
-   */
-  render() {
-    window.ctx.drawImage(window.resources.get(this.sprite), this.x, this.y);
-  }
 }

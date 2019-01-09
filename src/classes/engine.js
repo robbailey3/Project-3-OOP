@@ -27,6 +27,7 @@ export class Engine {
     this.ctx = this.canvas.getContext('2d');
     window.ctx = this.ctx;
     this.canvas.width = 505;
+    window.canvasWidth = 505;
     this.canvas.height = 606;
     document.body.appendChild(this.canvas);
   }
@@ -133,7 +134,7 @@ export class Engine {
    */
   renderGems() {
     this.gems.forEach(gem => {
-      this.ctx.drawImage(window.resources.get(gem.image), gem.x, gem.y);
+      this.ctx.drawImage(window.resources.get(gem.sprite), gem.x, gem.y);
     });
   }
   /**
@@ -149,10 +150,7 @@ export class Engine {
    */
   detectCollisions() {
     this.enemies.forEach(enemy => {
-      if (
-        Math.abs(enemy.x - this.player.x) < 30 &&
-        Math.abs(enemy.y - this.player.y) < 30
-      ) {
+      if (enemy.detectCollision(this.player.x, this.player.y)) {
         this.handleCollision();
       }
     });
@@ -162,18 +160,13 @@ export class Engine {
    * @memberof Engine
    */
   detectGems() {
-    this.gems.forEach(gem => {
-      if (
-        Math.abs(gem.x - this.player.x) < 30 &&
-        Math.abs(gem.y - this.player.y) < 30
-      ) {
-        this.gems = this.gems.filter(value => {
-          return value !== gem;
-        });
+    for (let i = 0; i < this.gems.length; i++) {
+      if (this.gems[i].detectCollision(this.player.x, this.player.y)) {
+        this.gems.splice(i, 1);
         this.game.collectedGems++;
         this.game.updateStats();
       }
-    });
+    }
   }
   /**
    * @description Deal with a collision (call to handleFail & move the player back to the start)
